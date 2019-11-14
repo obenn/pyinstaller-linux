@@ -1,0 +1,14 @@
+name: Docker Image CI
+
+on: [push]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build the Docker image
+      run: docker build . --build-arg PYTHON_VERSION=3.7 --build-arg PYINSTALLER_VERSION=3.5 --file Dockerfile --tag pyinstaller-linux:python3.7
